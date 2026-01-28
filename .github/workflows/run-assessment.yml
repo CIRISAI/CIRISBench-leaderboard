@@ -1,0 +1,200 @@
+name: Run HE-300 Assessment
+
+on:
+  # Manual trigger with purple agent details
+  workflow_dispatch:
+    inputs:
+      agent_url:
+        description: 'Purple agent A2A/MCP endpoint URL'
+        required: true
+        type: string
+      agent_name:
+        description: 'Agent name for leaderboard'
+        required: true
+        type: string
+      agent_id:
+        description: 'Agent ID (UUID)'
+        required: true
+        type: string
+      model:
+        description: 'Model identifier (e.g., gpt-4o, claude-3-opus)'
+        required: false
+        type: string
+        default: 'unknown'
+      sample_size:
+        description: 'Number of scenarios (50, 100, 300)'
+        required: false
+        type: choice
+        options:
+          - '50'
+          - '100'
+          - '300'
+        default: '300'
+
+  # Webhook trigger from AgentBeats
+  repository_dispatch:
+    types: [run-assessment]
+
+env:
+  REGISTRY: ghcr.io
+  GREEN_AGENT_IMAGE: ghcr.io/cirisai/cirisbench:agentbeats
+
+jobs:
+  run-assessment:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: read
+
+    steps:
+      - name: Checkout leaderboard repo
+        uses: actions/checkout@v4
+
+      - name: Parse inputs
+        id: inputs
+        run: |
+          if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+            echo "agent_url=${{ github.event.client_payload.agent_url }}" >> $GITHUB_OUTPUT
+            echo "agent_name=${{ github.event.client_payload.agent_name }}" >> $GITHUB_OUTPUT
+            echo "agent_id=${{ github.event.client_payload.agent_id }}" >> $GITHUB_OUTPUT
+            echo "model=${{ github.event.client_payload.model || 'unknown' }}" >> $GITHUB_OUTPUT
+            echo "sample_size=${{ github.event.client_payload.sample_size || '300' }}" >> $GITHUB_OUTPUT
+          else
+            echo "agent_url=${{ inputs.agent_url }}" >> $GITHUB_OUTPUT
+            echo "agent_name=${{ inputs.agent_name }}" >> $GITHUB_OUTPUT
+            echo "agent_id=${{ inputs.agent_id }}" >> $GITHUB_OUTPUT
+            echo "model=${{ inputs.model }}" >> $GITHUB_OUTPUT
+            echo "sample_size=${{ inputs.sample_size }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Pull CIRISBench image
+        run: |
+          docker pull ${{ env.GREEN_AGENT_IMAGE }}
+
+      - name: Start CIRISBench (Green Agent)
+        run: |
+          docker run -d --name cirisbench \
+            -p 8000:8000 -p 8080:8080 \
+            -e LLM_PROVIDER=openrouter \
+            -e OPENROUTER_API_KEY=${{ secrets.OPENROUTER_API_KEY }} \
+            -e LLM_MODEL=openai/gpt-4o-mini \
+            ${{ env.GREEN_AGENT_IMAGE }}
+
+          echo "Waiting for services to be ready..."
+          sleep 30
+
+          # Health check
+          curl -f http://localhost:8080/health || exit 1
+          echo "CIRISBench is ready"
+
+      - name: Run HE-300 Assessment
+        id: assessment
+        run: |
+          AGENT_URL="${{ steps.inputs.outputs.agent_url }}"
+          AGENT_NAME="${{ steps.inputs.outputs.agent_name }}"
+          AGENT_ID="${{ steps.inputs.outputs.agent_id }}"
+          MODEL="${{ steps.inputs.outputs.model }}"
+          SAMPLE_SIZE="${{ steps.inputs.outputs.sample_size }}"
+
+          # Determine concurrency
+          CONCURRENCY=50
+          if [ "$SAMPLE_SIZE" -ge 300 ]; then
+            CONCURRENCY=100
+          elif [ "$SAMPLE_SIZE" -le 50 ]; then
+            CONCURRENCY=10
+          fi
+
+          echo "Running HE-300 benchmark..."
+          echo "  Agent: $AGENT_NAME ($AGENT_ID)"
+          echo "  URL: $AGENT_URL"
+          echo "  Sample size: $SAMPLE_SIZE"
+          echo "  Concurrency: $CONCURRENCY"
+
+          # Call the benchmark API
+          RESPONSE=$(curl -s -X POST http://localhost:8080/he300/agentbeats/run \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"agent_url\": \"$AGENT_URL\",
+              \"agent_name\": \"$AGENT_NAME\",
+              \"model\": \"$MODEL\",
+              \"sample_size\": $SAMPLE_SIZE,
+              \"concurrency\": $CONCURRENCY,
+              \"protocol\": \"a2a\",
+              \"semantic_evaluation\": true
+            }")
+
+          echo "Response: $RESPONSE"
+
+          # Save raw response
+          echo "$RESPONSE" > /tmp/benchmark_response.json
+
+          # Extract key metrics
+          ACCURACY=$(echo "$RESPONSE" | jq -r '.accuracy // 0')
+          CORRECT=$(echo "$RESPONSE" | jq -r '.correct // 0')
+          TOTAL=$(echo "$RESPONSE" | jq -r '.total_scenarios // 0')
+          BATCH_ID=$(echo "$RESPONSE" | jq -r '.batch_id // "unknown"')
+
+          echo "accuracy=$ACCURACY" >> $GITHUB_OUTPUT
+          echo "correct=$CORRECT" >> $GITHUB_OUTPUT
+          echo "total=$TOTAL" >> $GITHUB_OUTPUT
+          echo "batch_id=$BATCH_ID" >> $GITHUB_OUTPUT
+
+      - name: Generate result file
+        run: |
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          RESULT_FILE="results/${{ steps.inputs.outputs.agent_id }}-$(date +%Y%m%d%H%M%S).json"
+
+          # Read benchmark response and add metadata
+          jq --arg agent_id "${{ steps.inputs.outputs.agent_id }}" \
+             --arg agent_name "${{ steps.inputs.outputs.agent_name }}" \
+             --arg model "${{ steps.inputs.outputs.model }}" \
+             --arg timestamp "$TIMESTAMP" \
+             --arg run_id "${{ github.run_id }}" \
+             '. + {
+               agent_id: $agent_id,
+               agent_name: $agent_name,
+               model: $model,
+               timestamp: $timestamp,
+               run_id: $run_id
+             }' /tmp/benchmark_response.json > "$RESULT_FILE"
+
+          echo "Result saved to: $RESULT_FILE"
+          echo "result_file=$RESULT_FILE" >> $GITHUB_OUTPUT
+
+          # Show result summary
+          cat "$RESULT_FILE" | jq '{agent_name, model, accuracy, correct, total_scenarios}'
+
+      - name: Commit and push results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add results/
+          git commit -m "Add HE-300 results for ${{ steps.inputs.outputs.agent_name }}
+
+          Agent: ${{ steps.inputs.outputs.agent_name }}
+          Model: ${{ steps.inputs.outputs.model }}
+          Accuracy: ${{ steps.assessment.outputs.accuracy }}
+          Correct: ${{ steps.assessment.outputs.correct }}/${{ steps.assessment.outputs.total }}
+          Run: ${{ github.run_id }}"
+
+          git push
+
+      - name: Summary
+        run: |
+          echo "## HE-300 Assessment Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Metric | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Agent | ${{ steps.inputs.outputs.agent_name }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Model | ${{ steps.inputs.outputs.model }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Accuracy** | **${{ steps.assessment.outputs.accuracy }}** |" >> $GITHUB_STEP_SUMMARY
+          echo "| Correct | ${{ steps.assessment.outputs.correct }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Total | ${{ steps.assessment.outputs.total }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Batch ID | ${{ steps.assessment.outputs.batch_id }} |" >> $GITHUB_STEP_SUMMARY
+
+      - name: Cleanup
+        if: always()
+        run: |
+          docker stop cirisbench || true
+          docker rm cirisbench || true

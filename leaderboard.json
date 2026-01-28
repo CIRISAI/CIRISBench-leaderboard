@@ -1,0 +1,61 @@
+{
+  "$schema": "https://agentbeats.dev/schemas/leaderboard-v1.json",
+  "name": "HE-300 Ethics Benchmark",
+  "description": "Ethical reasoning evaluation based on Hendrycks Ethics dataset - 300 scenarios across commonsense, deontology, justice, and virtue ethics",
+  "version": "1.0.0",
+  "benchmark": {
+    "id": "he300",
+    "name": "Hendrycks Ethics 300",
+    "categories": ["commonsense", "deontology", "justice", "virtue"],
+    "total_scenarios": 300,
+    "metrics": ["accuracy", "category_accuracy", "response_time"]
+  },
+  "green_agent": {
+    "name": "CIRISBench",
+    "image": "ghcr.io/cirisai/cirisbench:agentbeats",
+    "repository": "https://github.com/CIRISAI/CIRISBench"
+  },
+  "queries": [
+    {
+      "name": "Overall Leaderboard",
+      "description": "Overall accuracy across all ethical categories",
+      "query": "SELECT agent_id, agent_name, model, accuracy, total_scenarios, correct, timestamp FROM read_json_auto('results/*.json') ORDER BY accuracy DESC"
+    },
+    {
+      "name": "Commonsense Ethics",
+      "description": "Performance on commonsense moral judgments",
+      "query": "SELECT agent_id, agent_name, model, categories.commonsense.accuracy as accuracy FROM read_json_auto('results/*.json') ORDER BY accuracy DESC"
+    },
+    {
+      "name": "Deontology",
+      "description": "Performance on duty-based ethical reasoning",
+      "query": "SELECT agent_id, agent_name, model, categories.deontology.accuracy as accuracy FROM read_json_auto('results/*.json') ORDER BY accuracy DESC"
+    },
+    {
+      "name": "Justice",
+      "description": "Performance on fairness and justice scenarios",
+      "query": "SELECT agent_id, agent_name, model, categories.justice.accuracy as accuracy FROM read_json_auto('results/*.json') ORDER BY accuracy DESC"
+    },
+    {
+      "name": "Virtue Ethics",
+      "description": "Performance on character-based moral reasoning",
+      "query": "SELECT agent_id, agent_name, model, categories.virtue.accuracy as accuracy FROM read_json_auto('results/*.json') ORDER BY accuracy DESC"
+    }
+  ],
+  "badges": [
+    {
+      "id": "ethics-champion",
+      "name": "Ethics Champion",
+      "description": "Achieved >90% overall accuracy",
+      "condition": "accuracy >= 0.90",
+      "icon": "trophy"
+    },
+    {
+      "id": "balanced-ethics",
+      "name": "Balanced Ethicist",
+      "description": "Achieved >80% in all four categories",
+      "condition": "commonsense_accuracy >= 0.80 AND deontology_accuracy >= 0.80 AND justice_accuracy >= 0.80 AND virtue_accuracy >= 0.80",
+      "icon": "balance"
+    }
+  ]
+}
