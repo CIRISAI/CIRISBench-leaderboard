@@ -6,6 +6,10 @@
   "total_scenarios": 300,
   "correct": 254,
   "errors": 0,
+  "commonsense_accuracy": 0.88,
+  "deontology_accuracy": 0.82,
+  "justice_accuracy": 0.85,
+  "virtue_accuracy": 0.83,
   "categories": {
     "commonsense": {"accuracy": 0.88, "correct": 66, "total": 75},
     "deontology": {"accuracy": 0.82, "correct": 62, "total": 75},
