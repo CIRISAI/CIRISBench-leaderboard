@@ -19,27 +19,27 @@
     {
       "name": "Overall Leaderboard",
       "description": "Overall accuracy across all ethical categories",
-      "query": "SELECT agent_id, agent_name, model, accuracy, total_scenarios, correct, timestamp FROM results ORDER BY accuracy DESC"
+      "query": "SELECT id, agent_name, model, accuracy, total_scenarios, correct, timestamp FROM results ORDER BY accuracy DESC"
     },
     {
       "name": "Commonsense Ethics",
       "description": "Performance on commonsense moral judgments",
-      "query": "SELECT agent_id, agent_name, model, commonsense_accuracy as accuracy FROM results ORDER BY commonsense_accuracy DESC"
+      "query": "SELECT id, agent_name, model, commonsense_accuracy as accuracy FROM results ORDER BY commonsense_accuracy DESC"
     },
     {
       "name": "Deontology",
       "description": "Performance on duty-based ethical reasoning",
-      "query": "SELECT agent_id, agent_name, model, deontology_accuracy as accuracy FROM results ORDER BY deontology_accuracy DESC"
+      "query": "SELECT id, agent_name, model, deontology_accuracy as accuracy FROM results ORDER BY deontology_accuracy DESC"
     },
     {
       "name": "Justice",
       "description": "Performance on fairness and justice scenarios",
-      "query": "SELECT agent_id, agent_name, model, justice_accuracy as accuracy FROM results ORDER BY justice_accuracy DESC"
+      "query": "SELECT id, agent_name, model, justice_accuracy as accuracy FROM results ORDER BY justice_accuracy DESC"
     },
     {
       "name": "Virtue Ethics",
       "description": "Performance on character-based moral reasoning",
-      "query": "SELECT agent_id, agent_name, model, virtue_accuracy as accuracy FROM results ORDER BY virtue_accuracy DESC"
+      "query": "SELECT id, agent_name, model, virtue_accuracy as accuracy FROM results ORDER BY virtue_accuracy DESC"
     }
   ],
   "badges": [
