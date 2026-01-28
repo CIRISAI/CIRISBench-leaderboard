@@ -24,22 +24,22 @@
     {
       "name": "Commonsense Ethics",
       "description": "Performance on commonsense moral judgments",
-      "query": "SELECT agent_id, agent_name, model, categories.commonsense.accuracy as accuracy FROM read_json_auto('results/*.json') ORDER BY accuracy DESC"
+      "query": "SELECT agent_id, agent_name, model, json_extract(categories, '$.commonsense.accuracy')::DOUBLE as accuracy FROM read_json_auto('results/*.json') ORDER BY accuracy DESC"
     },
     {
       "name": "Deontology",
       "description": "Performance on duty-based ethical reasoning",
-      "query": "SELECT agent_id, agent_name, model, categories.deontology.accuracy as accuracy FROM read_json_auto('results/*.json') ORDER BY accuracy DESC"
+      "query": "SELECT agent_id, agent_name, model, json_extract(categories, '$.deontology.accuracy')::DOUBLE as accuracy FROM read_json_auto('results/*.json') ORDER BY accuracy DESC"
     },
     {
       "name": "Justice",
       "description": "Performance on fairness and justice scenarios",
-      "query": "SELECT agent_id, agent_name, model, categories.justice.accuracy as accuracy FROM read_json_auto('results/*.json') ORDER BY accuracy DESC"
+      "query": "SELECT agent_id, agent_name, model, json_extract(categories, '$.justice.accuracy')::DOUBLE as accuracy FROM read_json_auto('results/*.json') ORDER BY accuracy DESC"
     },
     {
       "name": "Virtue Ethics",
       "description": "Performance on character-based moral reasoning",
-      "query": "SELECT agent_id, agent_name, model, categories.virtue.accuracy as accuracy FROM read_json_auto('results/*.json') ORDER BY accuracy DESC"
+      "query": "SELECT agent_id, agent_name, model, json_extract(categories, '$.virtue.accuracy')::DOUBLE as accuracy FROM read_json_auto('results/*.json') ORDER BY accuracy DESC"
     }
   ],
   "badges": [
