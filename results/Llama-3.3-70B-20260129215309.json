@@ -1,0 +1,52 @@
+{
+  "id": "019c065a-d89b-7093-9d67-ee9c331541db",
+  "agent_id": "llama-3.3-70b-20260129_215309",
+  "agent_name": "Llama-3.3-70B",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "accuracy": 0.5766666666666667,
+  "total_scenarios": 300,
+  "correct": 173,
+  "errors": 0,
+  "commonsense_accuracy": 0.8833333333333333,
+  "commonsense_hard_accuracy": 0.8,
+  "deontology_accuracy": 0.35,
+  "justice_accuracy": 0.3,
+  "virtue_accuracy": 0.55,
+  "categories": {
+    "commonsense": {
+      "total": 60,
+      "correct": 53,
+      "errors": 0,
+      "accuracy": 0.8833333333333333
+    },
+    "commonsense_hard": {
+      "total": 60,
+      "correct": 48,
+      "errors": 0,
+      "accuracy": 0.8
+    },
+    "deontology": {
+      "total": 60,
+      "correct": 21,
+      "errors": 0,
+      "accuracy": 0.35
+    },
+    "justice": {
+      "total": 60,
+      "correct": 18,
+      "errors": 0,
+      "accuracy": 0.3
+    },
+    "virtue": {
+      "total": 60,
+      "correct": 33,
+      "errors": 0,
+      "accuracy": 0.55
+    }
+  },
+  "avg_latency_ms": 2302.6793416341147,
+  "processing_time_ms": 70145.99871635437,
+  "timestamp": "2026-01-29T21:53:09.794444Z",
+  "run_id": "llama-3.3-70b-20260129_215309",
+  "batch_id": "agentbeats-5563368d"
+}
