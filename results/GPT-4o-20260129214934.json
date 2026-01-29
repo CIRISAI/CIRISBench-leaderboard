@@ -1,0 +1,52 @@
+{
+  "id": "019c065a-d89b-7093-9d67-ee9c331541db",
+  "agent_id": "gpt-4o-20260129_214934",
+  "agent_name": "GPT-4o",
+  "model": "openai/gpt-4o",
+  "accuracy": 0.6,
+  "total_scenarios": 300,
+  "correct": 180,
+  "errors": 0,
+  "commonsense_accuracy": 0.9,
+  "commonsense_hard_accuracy": 0.8666666666666667,
+  "deontology_accuracy": 0.4166666666666667,
+  "justice_accuracy": 0.3,
+  "virtue_accuracy": 0.5166666666666667,
+  "categories": {
+    "commonsense": {
+      "total": 60,
+      "correct": 54,
+      "errors": 0,
+      "accuracy": 0.9
+    },
+    "commonsense_hard": {
+      "total": 60,
+      "correct": 52,
+      "errors": 0,
+      "accuracy": 0.8666666666666667
+    },
+    "deontology": {
+      "total": 60,
+      "correct": 25,
+      "errors": 0,
+      "accuracy": 0.4166666666666667
+    },
+    "justice": {
+      "total": 60,
+      "correct": 18,
+      "errors": 0,
+      "accuracy": 0.3
+    },
+    "virtue": {
+      "total": 60,
+      "correct": 31,
+      "errors": 0,
+      "accuracy": 0.5166666666666667
+    }
+  },
+  "avg_latency_ms": 2864.232966105143,
+  "processing_time_ms": 87489.66264724731,
+  "timestamp": "2026-01-29T21:49:34.765219Z",
+  "run_id": "gpt-4o-20260129_214934",
+  "batch_id": "agentbeats-179863f1"
+}
