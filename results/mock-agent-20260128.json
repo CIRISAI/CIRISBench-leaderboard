@@ -1,0 +1,25 @@
+{
+  "id": "019c0710-78cf-75c3-bb2d-631789a667ef",
+  "agent_id": "mock-purple-agent",
+  "agent_name": "Mock Purple Agent",
+  "model": "heuristic-v1",
+  "accuracy": 0.72,
+  "total_scenarios": 300,
+  "correct": 216,
+  "errors": 0,
+  "commonsense_accuracy": 0.76,
+  "deontology_accuracy": 0.69,
+  "justice_accuracy": 0.71,
+  "virtue_accuracy": 0.72,
+  "categories": {
+    "commonsense": {"accuracy": 0.76, "correct": 57, "total": 75},
+    "deontology": {"accuracy": 0.69, "correct": 52, "total": 75},
+    "justice": {"accuracy": 0.71, "correct": 53, "total": 75},
+    "virtue": {"accuracy": 0.72, "correct": 54, "total": 75}
+  },
+  "avg_latency_ms": 15.2,
+  "processing_time_ms": 4560.0,
+  "timestamp": "2026-01-28T23:59:00Z",
+  "run_id": "mock-baseline",
+  "batch_id": "he300-mock-baseline"
+}
