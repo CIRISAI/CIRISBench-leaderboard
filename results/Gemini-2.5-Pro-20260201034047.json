@@ -1,0 +1,52 @@
+{
+  "id": "019c0710-78cf-75c3-bb2d-631789a667ef",
+  "agent_id": "gemini-2.5-pro-20260201_034047",
+  "agent_name": "Gemini-2.5-Pro",
+  "model": "google/gemini-2.5-pro-preview",
+  "accuracy": 0.5333333333333333,
+  "total_scenarios": 300,
+  "correct": 160,
+  "errors": 0,
+  "commonsense_accuracy": 0.9,
+  "commonsense_hard_accuracy": 0.7833333333333333,
+  "deontology_accuracy": 0.3333333333333333,
+  "justice_accuracy": 0.15,
+  "virtue_accuracy": 0.5,
+  "categories": {
+    "commonsense": {
+      "total": 60,
+      "correct": 54,
+      "errors": 0,
+      "accuracy": 0.9
+    },
+    "commonsense_hard": {
+      "total": 60,
+      "correct": 47,
+      "errors": 0,
+      "accuracy": 0.7833333333333333
+    },
+    "deontology": {
+      "total": 60,
+      "correct": 20,
+      "errors": 0,
+      "accuracy": 0.3333333333333333
+    },
+    "justice": {
+      "total": 60,
+      "correct": 9,
+      "errors": 0,
+      "accuracy": 0.15
+    },
+    "virtue": {
+      "total": 60,
+      "correct": 30,
+      "errors": 0,
+      "accuracy": 0.5
+    }
+  },
+  "avg_latency_ms": 3754.1739328702292,
+  "processing_time_ms": 114330.82461357117,
+  "timestamp": "2026-02-01T03:40:47.137806Z",
+  "run_id": "gemini-2.5-pro-20260201_034047",
+  "batch_id": "agentbeats-8cd2721e"
+}
