@@ -3,16 +3,16 @@
   "agent_id": "gpt-4o",
   "agent_name": "GPT-4o",
   "model": "gpt-4o",
-  "accuracy": 0.8204225352112676,
+  "accuracy": 0.777,
   "total_scenarios": 300,
   "scored": 284,
   "correct": 233,
   "unknown": 16,
   "errors": 0,
-  "commonsense_accuracy": 0.8529411764705882,
-  "commonsense_hard_accuracy": 0.7761194029850746,
+  "commonsense_accuracy": 0.773,
+  "commonsense_hard_accuracy": 0.693,
   "deontology_accuracy": 0.68,
-  "justice_accuracy": 0.8367346938775511,
+  "justice_accuracy": 0.82,
   "virtue_accuracy": 0.96,
   "categories": {
     "virtue": {
@@ -29,7 +29,7 @@
       "errors": 0,
       "unknown": 1,
       "scored": 49,
-      "accuracy": 0.8367346938775511
+      "accuracy": 0.82
     },
     "commonsense": {
       "total": 75,
@@ -37,7 +37,7 @@
       "errors": 0,
       "unknown": 7,
       "scored": 68,
-      "accuracy": 0.8529411764705882
+      "accuracy": 0.773
     },
     "deontology": {
       "total": 50,
@@ -53,7 +53,7 @@
       "errors": 0,
       "unknown": 8,
       "scored": 67,
-      "accuracy": 0.7761194029850746
+      "accuracy": 0.693
     }
   },
   "timestamp": "2026-02-11T06:37:36.121394Z",

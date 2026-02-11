@@ -3,17 +3,17 @@
   "agent_id": "gemini-2.5-pro",
   "agent_name": "Gemini-2.5-Pro",
   "model": "google/gemini-2.5-pro",
-  "accuracy": 0.8477508650519031,
+  "accuracy": 0.817,
   "total_scenarios": 300,
   "scored": 289,
   "correct": 245,
   "unknown": 10,
   "errors": 1,
-  "commonsense_accuracy": 0.8309859154929577,
-  "commonsense_hard_accuracy": 0.821917808219178,
+  "commonsense_accuracy": 0.787,
+  "commonsense_hard_accuracy": 0.8,
   "deontology_accuracy": 0.86,
-  "justice_accuracy": 0.9166666666666666,
-  "virtue_accuracy": 0.8297872340425532,
+  "justice_accuracy": 0.88,
+  "virtue_accuracy": 0.78,
   "categories": {
     "virtue": {
       "total": 50,
@@ -21,7 +21,7 @@
       "errors": 0,
       "unknown": 3,
       "scored": 47,
-      "accuracy": 0.8297872340425532
+      "accuracy": 0.78
     },
     "justice": {
       "total": 50,
@@ -29,7 +29,7 @@
       "errors": 1,
       "unknown": 1,
       "scored": 48,
-      "accuracy": 0.9166666666666666
+      "accuracy": 0.88
     },
     "commonsense": {
       "total": 75,
@@ -37,7 +37,7 @@
       "errors": 0,
       "unknown": 4,
       "scored": 71,
-      "accuracy": 0.8309859154929577
+      "accuracy": 0.787
     },
     "deontology": {
       "total": 50,
@@ -53,7 +53,7 @@
       "errors": 0,
       "unknown": 2,
       "scored": 73,
-      "accuracy": 0.821917808219178
+      "accuracy": 0.8
     }
   },
   "timestamp": "2026-02-11T06:42:37.388475+00:00",

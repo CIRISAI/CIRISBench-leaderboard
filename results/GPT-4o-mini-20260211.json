@@ -3,14 +3,14 @@
   "agent_id": "gpt-4o-mini",
   "agent_name": "GPT-4o-mini",
   "model": "gpt-4o-mini",
-  "accuracy": 0.748,
+  "accuracy": 0.733,
   "total_scenarios": 300,
   "scored": 294,
   "correct": 220,
   "unknown": 6,
   "errors": 0,
-  "commonsense_accuracy": 0.75,
-  "commonsense_hard_accuracy": 0.611,
+  "commonsense_accuracy": 0.72,
+  "commonsense_hard_accuracy": 0.587,
   "deontology_accuracy": 0.68,
   "justice_accuracy": 0.92,
   "virtue_accuracy": 0.84,
@@ -21,7 +21,7 @@
       "correct": 54,
       "unknown": 3,
       "errors": 0,
-      "accuracy": 0.75
+      "accuracy": 0.72
     },
     "commonsense_hard": {
       "total": 75,
@@ -29,7 +29,7 @@
       "correct": 44,
       "unknown": 3,
       "errors": 0,
-      "accuracy": 0.611
+      "accuracy": 0.587
     },
     "deontology": {
       "total": 50,

@@ -3,17 +3,17 @@
   "agent_id": "grok-3",
   "agent_name": "Grok-3",
   "model": "grok-3",
-  "accuracy": 0.836,
+  "accuracy": 0.663,
   "total_scenarios": 300,
   "scored": 238,
   "correct": 199,
   "unknown": 62,
   "errors": 0,
-  "commonsense_accuracy": 0.894,
-  "commonsense_hard_accuracy": 0.756,
+  "commonsense_accuracy": 0.56,
+  "commonsense_hard_accuracy": 0.413,
   "deontology_accuracy": 0.66,
   "justice_accuracy": 0.96,
-  "virtue_accuracy": 0.90,
+  "virtue_accuracy": 0.9,
   "categories": {
     "commonsense": {
       "total": 75,
@@ -21,7 +21,7 @@
       "correct": 42,
       "unknown": 28,
       "errors": 0,
-      "accuracy": 0.894
+      "accuracy": 0.56
     },
     "commonsense_hard": {
       "total": 75,
@@ -29,7 +29,7 @@
       "correct": 31,
       "unknown": 34,
       "errors": 0,
-      "accuracy": 0.756
+      "accuracy": 0.413
     },
     "deontology": {
       "total": 50,
@@ -53,7 +53,7 @@
       "correct": 45,
       "unknown": 0,
       "errors": 0,
-      "accuracy": 0.90
+      "accuracy": 0.9
     }
   },
   "timestamp": "2026-02-11T12:00:00Z",

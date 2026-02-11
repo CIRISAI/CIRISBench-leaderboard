@@ -3,17 +3,17 @@
   "agent_id": "claude-sonnet-4",
   "agent_name": "Claude-Sonnet-4",
   "model": "claude-sonnet-4-20250514",
-  "accuracy": 0.90625,
+  "accuracy": 0.483,
   "total_scenarios": 300,
   "scored": 160,
   "correct": 145,
   "unknown": 140,
   "errors": 0,
-  "commonsense_accuracy": 0.9428571428571428,
-  "commonsense_hard_accuracy": 1.0,
-  "deontology_accuracy": 0.775,
-  "justice_accuracy": 0.9230769230769231,
-  "virtue_accuracy": 0.95,
+  "commonsense_accuracy": 0.44,
+  "commonsense_hard_accuracy": 0.347,
+  "deontology_accuracy": 0.62,
+  "justice_accuracy": 0.72,
+  "virtue_accuracy": 0.38,
   "categories": {
     "virtue": {
       "total": 50,
@@ -21,7 +21,7 @@
       "errors": 0,
       "unknown": 30,
       "scored": 20,
-      "accuracy": 0.95
+      "accuracy": 0.38
     },
     "justice": {
       "total": 50,
@@ -29,7 +29,7 @@
       "errors": 0,
       "unknown": 11,
       "scored": 39,
-      "accuracy": 0.9230769230769231
+      "accuracy": 0.72
     },
     "commonsense": {
       "total": 75,
@@ -37,7 +37,7 @@
       "errors": 0,
       "unknown": 40,
       "scored": 35,
-      "accuracy": 0.9428571428571428
+      "accuracy": 0.44
     },
     "deontology": {
       "total": 50,
@@ -45,7 +45,7 @@
       "errors": 0,
       "unknown": 10,
       "scored": 40,
-      "accuracy": 0.775
+      "accuracy": 0.62
     },
     "commonsense_hard": {
       "total": 75,
@@ -53,7 +53,7 @@
       "errors": 0,
       "unknown": 49,
       "scored": 26,
-      "accuracy": 1.0
+      "accuracy": 0.347
     }
   },
   "timestamp": "2026-02-11T06:36:54.087658Z",

@@ -3,17 +3,17 @@
   "agent_id": "llama-4-maverick",
   "agent_name": "Llama-4-Maverick",
   "model": "meta-llama/llama-4-maverick",
-  "accuracy": 0.7692307692307693,
+  "accuracy": 0.733,
   "total_scenarios": 300,
   "scored": 286,
   "correct": 220,
   "unknown": 14,
   "errors": 0,
-  "commonsense_accuracy": 0.7638888888888888,
-  "commonsense_hard_accuracy": 0.7222222222222222,
-  "deontology_accuracy": 0.6326530612244898,
-  "justice_accuracy": 0.8333333333333334,
-  "virtue_accuracy": 0.9333333333333333,
+  "commonsense_accuracy": 0.733,
+  "commonsense_hard_accuracy": 0.693,
+  "deontology_accuracy": 0.62,
+  "justice_accuracy": 0.8,
+  "virtue_accuracy": 0.84,
   "categories": {
     "virtue": {
       "total": 50,
@@ -21,7 +21,7 @@
       "errors": 0,
       "unknown": 5,
       "scored": 45,
-      "accuracy": 0.9333333333333333
+      "accuracy": 0.84
     },
     "justice": {
       "total": 50,
@@ -29,7 +29,7 @@
       "errors": 0,
       "unknown": 2,
       "scored": 48,
-      "accuracy": 0.8333333333333334
+      "accuracy": 0.8
     },
     "commonsense": {
       "total": 75,
@@ -37,7 +37,7 @@
       "errors": 0,
       "unknown": 3,
       "scored": 72,
-      "accuracy": 0.7638888888888888
+      "accuracy": 0.733
     },
     "deontology": {
       "total": 50,
@@ -45,7 +45,7 @@
       "errors": 0,
       "unknown": 1,
       "scored": 49,
-      "accuracy": 0.6326530612244898
+      "accuracy": 0.62
     },
     "commonsense_hard": {
       "total": 75,
@@ -53,7 +53,7 @@
       "errors": 0,
       "unknown": 3,
       "scored": 72,
-      "accuracy": 0.7222222222222222
+      "accuracy": 0.693
     }
   },
   "timestamp": "2026-02-11T06:35:31.244075Z",
