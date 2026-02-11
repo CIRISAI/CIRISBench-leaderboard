@@ -2,26 +2,37 @@
 
 HE-300 Ethics Benchmark leaderboard for [AgentBeats](https://agentbeats.dev).
 
-> **v0.2.0 — Major Update (February 2026)**
+> **v0.2.1 — Evaluation Alignment (February 2026)**
 >
-> CIRISBench has been **decoupled from CIRISNode** and now operates as a standalone benchmarking platform:
+> CIRISBench evaluation logic is now **fully aligned with CIRISNode patterns**:
 >
-> - **Category-Aware Scoring Fixed** — The Hendrycks Ethics dataset uses inverted labels for deontology, justice, and virtue categories. Previous results incorrectly scored these categories. All benchmarks have been re-run with the corrected evaluator.
-> - **Native A2A/MCP Support** — Built-in protocol adapters for agent communication
-> - **Improved Accuracy** — Models now show 10-15% higher accuracy with correct label mapping
+> - **Strict first-word parsing** — Primary evaluation method, matches CIRISNode behavior
+> - **Category-aware prompts** — Reasonable/Unreasonable (deontology, justice), Matches/Contradicts (virtue)
+> - **Fixed deontology loading** — Scenario + excuse columns properly combined
+> - **HE-300 distribution** — Correct 75/75/50/50/50 category sampling
 >
-> **Previous leaderboard results have been invalidated.** New scores reflect accurate category-aware evaluation.
+> Deontology accuracy improved from ~47% (random guessing) to 66-68% after fixing scenario loading.
 
 ## Overview
 
-This repository maintains the leaderboard for the HE-300 (Hendrycks Ethics) benchmark, which evaluates AI agents across 300 ethical reasoning scenarios in four categories:
+This repository maintains the leaderboard for the HE-300 (Hendrycks Ethics) benchmark, which evaluates AI agents across 300 ethical reasoning scenarios in five categories:
 
 | Category | Scenarios | Description |
 |----------|-----------|-------------|
 | **Commonsense** | 75 | Everyday moral intuitions |
-| **Deontology** | 75 | Duty-based ethical reasoning |
-| **Justice** | 75 | Fairness and equitable treatment |
-| **Virtue** | 75 | Character-based moral reasoning |
+| **Commonsense (Hard)** | 75 | Challenging moral intuitions |
+| **Deontology** | 50 | Duty-based ethical reasoning |
+| **Justice** | 50 | Fairness and equitable treatment |
+| **Virtue** | 50 | Character-based moral reasoning |
+
+### Leaderboard (February 2026)
+
+| Model | Overall | Justice | Virtue | Deontology | Commonsense | CS Hard |
+|-------|---------|---------|--------|------------|-------------|---------|
+| **Grok-3** | **83.6%** | 96.0% | 90.0% | 66.0% | 89.4% | 75.6% |
+| **GPT-4o-mini** | **74.8%** | 92.0% | 84.0% | 68.0% | 75.0% | 61.1% |
+
+*Reference: [ethicsengine.org](https://ethicsengine.org) — GPT-4o-mini 71.7%, Grok-3 82.3%*
 
 ## How It Works
 
@@ -82,29 +93,29 @@ Each assessment produces a JSON file in `results/`:
 
 ## Changelog
 
-### 2026-02-11: v0.2.0 - Standalone Release + Category Label Fix
+### 2026-02-11: v0.2.1 - Evaluation Alignment
 
 **Breaking Changes:**
-- All previous benchmark results invalidated due to incorrect label mapping
+- Previous benchmark results invalidated due to evaluation fixes
 
 **Bug Fixes:**
-- **Category-Aware Label Mapping**: Fixed critical scoring bug where deontology, justice, and virtue categories used incorrect label conventions
-  - Hendrycks Ethics uses inverted labels: commonsense (0=ethical), but deontology/justice/virtue (1=positive)
-  - Previous evaluator treated all categories like commonsense, causing ~3/5 categories to score incorrectly
-  - Models now show 10-15% higher accuracy with correct mapping
+- **Deontology Loading**: Fixed critical bug where deontology scenarios only used "scenario" column, missing "excuse" column. Accuracy improved from ~47% to 66-68%.
+- **First-Word Parsing**: Fixed punctuation stripping for single-word responses
+- **HE-300 Distribution**: Corrected to 75/75/50/50/50 (was 75/75/75/75)
 
 **New Features:**
-- **CIRISNode Decoupled**: CIRISBench is now a fully standalone benchmarking platform
-- **Native A2A Protocol**: Built-in JSON-RPC agent-to-agent communication
-- **Native MCP Support**: Model Context Protocol tool invocation
-- **Category-Specific Prompts**: Each category now uses appropriate question format:
-  - Commonsense: "Is this action ethical or unethical?"
-  - Deontology: "Is this excuse reasonable or unreasonable?"
-  - Justice: "Is this scenario just or unjust?"
-  - Virtue: "Does this behavior match or contradict the trait?"
+- **Strict First-Word Parsing**: Primary evaluation method (semantic analysis only for sanity checking)
+- **Category-Aware Prompts**: Aligned with CIRISNode patterns
+- **Unknown Tracking**: Unparseable responses tracked separately from errors
 
 **Re-evaluated Models:**
-- Llama-4-Maverick, Claude-Sonnet-4, GPT-4o, Gemini-2.5-Pro, Llama-3.3-70B, Qwen-2.5-72B
+- GPT-4o-mini (74.8%), Grok-3 (83.6%)
+
+### 2026-02-10: v0.2.0 - Standalone Release + Category Label Fix
+
+- CIRISNode decoupled - standalone benchmarking platform
+- Category-aware label mapping for Hendrycks Ethics
+- Native A2A/MCP protocol support
 
 ## Links
 

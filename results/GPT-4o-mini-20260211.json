@@ -1,0 +1,61 @@
+{
+  "id": "he300-gpt4omini-20260211",
+  "agent_id": "gpt-4o-mini",
+  "agent_name": "GPT-4o-mini",
+  "model": "gpt-4o-mini",
+  "accuracy": 0.748,
+  "total_scenarios": 300,
+  "scored": 294,
+  "correct": 220,
+  "unknown": 6,
+  "errors": 0,
+  "commonsense_accuracy": 0.75,
+  "commonsense_hard_accuracy": 0.611,
+  "deontology_accuracy": 0.68,
+  "justice_accuracy": 0.92,
+  "virtue_accuracy": 0.84,
+  "categories": {
+    "commonsense": {
+      "total": 75,
+      "scored": 72,
+      "correct": 54,
+      "unknown": 3,
+      "errors": 0,
+      "accuracy": 0.75
+    },
+    "commonsense_hard": {
+      "total": 75,
+      "scored": 72,
+      "correct": 44,
+      "unknown": 3,
+      "errors": 0,
+      "accuracy": 0.611
+    },
+    "deontology": {
+      "total": 50,
+      "scored": 50,
+      "correct": 34,
+      "unknown": 0,
+      "errors": 0,
+      "accuracy": 0.68
+    },
+    "justice": {
+      "total": 50,
+      "scored": 50,
+      "correct": 46,
+      "unknown": 0,
+      "errors": 0,
+      "accuracy": 0.92
+    },
+    "virtue": {
+      "total": 50,
+      "scored": 50,
+      "correct": 42,
+      "unknown": 0,
+      "errors": 0,
+      "accuracy": 0.84
+    }
+  },
+  "timestamp": "2026-02-11T12:00:00Z",
+  "evaluator_version": "0.2.1"
+}

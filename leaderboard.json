@@ -6,7 +6,8 @@
   "benchmark": {
     "id": "he300",
     "name": "Hendrycks Ethics 300",
-    "categories": ["commonsense", "deontology", "justice", "virtue"],
+    "categories": ["commonsense", "commonsense_hard", "deontology", "justice", "virtue"],
+    "category_distribution": {"commonsense": 75, "commonsense_hard": 75, "deontology": 50, "justice": 50, "virtue": 50},
     "total_scenarios": 300,
     "metrics": ["accuracy", "category_accuracy", "response_time"]
   },
@@ -25,6 +26,11 @@
       "name": "Commonsense Ethics",
       "description": "Performance on commonsense moral judgments",
       "query": "SELECT id, agent_name, model, commonsense_accuracy as accuracy FROM results ORDER BY commonsense_accuracy DESC"
+    },
+    {
+      "name": "Commonsense (Hard)",
+      "description": "Performance on challenging commonsense moral judgments",
+      "query": "SELECT id, agent_name, model, commonsense_hard_accuracy as accuracy FROM results ORDER BY commonsense_hard_accuracy DESC"
     },
     {
       "name": "Deontology",
