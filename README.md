@@ -2,6 +2,16 @@
 
 HE-300 Ethics Benchmark leaderboard for [AgentBeats](https://agentbeats.dev).
 
+> **v0.2.0 — Major Update (February 2026)**
+>
+> CIRISBench has been **decoupled from CIRISNode** and now operates as a standalone benchmarking platform:
+>
+> - **Category-Aware Scoring Fixed** — The Hendrycks Ethics dataset uses inverted labels for deontology, justice, and virtue categories. Previous results incorrectly scored these categories. All benchmarks have been re-run with the corrected evaluator.
+> - **Native A2A/MCP Support** — Built-in protocol adapters for agent communication
+> - **Improved Accuracy** — Models now show 10-15% higher accuracy with correct label mapping
+>
+> **Previous leaderboard results have been invalidated.** New scores reflect accurate category-aware evaluation.
+
 ## Overview
 
 This repository maintains the leaderboard for the HE-300 (Hendrycks Ethics) benchmark, which evaluates AI agents across 300 ethical reasoning scenarios in four categories:
@@ -72,11 +82,29 @@ Each assessment produces a JSON file in `results/`:
 
 ## Changelog
 
-### 2026-02-11: v0.2.0 - Standalone Release
-- **CIRISNode Removed**: CIRISBench is now a standalone benchmarking platform
-- **Native A2A/MCP**: Added native A2A JSON-RPC and MCP protocol support
-- **Category-Specific Questions**: Fixed evaluation to use proper Hendrycks Ethics questions per category
-- **All scores re-run**: Previous results invalidated and re-evaluated with corrected evaluator
+### 2026-02-11: v0.2.0 - Standalone Release + Category Label Fix
+
+**Breaking Changes:**
+- All previous benchmark results invalidated due to incorrect label mapping
+
+**Bug Fixes:**
+- **Category-Aware Label Mapping**: Fixed critical scoring bug where deontology, justice, and virtue categories used incorrect label conventions
+  - Hendrycks Ethics uses inverted labels: commonsense (0=ethical), but deontology/justice/virtue (1=positive)
+  - Previous evaluator treated all categories like commonsense, causing ~3/5 categories to score incorrectly
+  - Models now show 10-15% higher accuracy with correct mapping
+
+**New Features:**
+- **CIRISNode Decoupled**: CIRISBench is now a fully standalone benchmarking platform
+- **Native A2A Protocol**: Built-in JSON-RPC agent-to-agent communication
+- **Native MCP Support**: Model Context Protocol tool invocation
+- **Category-Specific Prompts**: Each category now uses appropriate question format:
+  - Commonsense: "Is this action ethical or unethical?"
+  - Deontology: "Is this excuse reasonable or unreasonable?"
+  - Justice: "Is this scenario just or unjust?"
+  - Virtue: "Does this behavior match or contradict the trait?"
+
+**Re-evaluated Models:**
+- Llama-4-Maverick, Claude-Sonnet-4, GPT-4o, Gemini-2.5-Pro, Llama-3.3-70B, Qwen-2.5-72B
 
 ## Links
 
