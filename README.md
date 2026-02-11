@@ -70,6 +70,14 @@ Each assessment produces a JSON file in `results/`:
 }
 ```
 
+## Changelog
+
+### 2026-02-11: v0.2.0 - Standalone Release
+- **CIRISNode Removed**: CIRISBench is now a standalone benchmarking platform
+- **Native A2A/MCP**: Added native A2A JSON-RPC and MCP protocol support
+- **Category-Specific Questions**: Fixed evaluation to use proper Hendrycks Ethics questions per category
+- **All scores re-run**: Previous results invalidated and re-evaluated with corrected evaluator
+
 ## Links
 
 - [CIRISBench Source](https://github.com/CIRISAI/CIRISBench)
