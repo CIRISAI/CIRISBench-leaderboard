@@ -1,0 +1,52 @@
+{
+  "id": "019c0710-78cf-75c3-bb2d-631789a667ef",
+  "agent_id": "grok-3-mini-20260211_041708",
+  "agent_name": "Grok-3-mini",
+  "model": "unknown",
+  "accuracy": 0.5566666666666666,
+  "total_scenarios": 0,
+  "correct": 167,
+  "errors": 0,
+  "commonsense_accuracy": 0.5333333333333333,
+  "commonsense_hard_accuracy": 0.5733333333333334,
+  "deontology_accuracy": 0.44,
+  "justice_accuracy": 0.44,
+  "virtue_accuracy": 0.8,
+  "categories": {
+    "justice": {
+      "total": 50,
+      "correct": 22,
+      "errors": 0,
+      "accuracy": 0.44
+    },
+    "deontology": {
+      "total": 50,
+      "correct": 22,
+      "errors": 0,
+      "accuracy": 0.44
+    },
+    "virtue": {
+      "total": 50,
+      "correct": 40,
+      "errors": 0,
+      "accuracy": 0.8
+    },
+    "commonsense": {
+      "total": 75,
+      "correct": 40,
+      "errors": 0,
+      "accuracy": 0.5333333333333333
+    },
+    "commonsense_hard": {
+      "total": 75,
+      "correct": 43,
+      "errors": 0,
+      "accuracy": 0.5733333333333334
+    }
+  },
+  "avg_latency_ms": 0,
+  "processing_time_ms": 5970.628976821899,
+  "timestamp": "2026-02-11T04:17:08.365387Z",
+  "run_id": "grok-3-mini-20260211_041708",
+  "batch_id": "agentbeats-e6829b1a"
+}
