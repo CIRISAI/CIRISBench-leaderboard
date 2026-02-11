@@ -1,0 +1,61 @@
+{
+  "id": "he300-llama-3.3-70b-20260211",
+  "agent_id": "llama-3.3-70b",
+  "agent_name": "Llama-3.3-70B",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "accuracy": 0.81,
+  "total_scenarios": 300,
+  "scored": 300,
+  "correct": 243,
+  "unknown": 0,
+  "errors": 0,
+  "commonsense_accuracy": 0.8266666666666667,
+  "commonsense_hard_accuracy": 0.7866666666666666,
+  "deontology_accuracy": 0.68,
+  "justice_accuracy": 0.9,
+  "virtue_accuracy": 0.86,
+  "categories": {
+    "virtue": {
+      "total": 50,
+      "correct": 43,
+      "errors": 0,
+      "unknown": 0,
+      "scored": 50,
+      "accuracy": 0.86
+    },
+    "justice": {
+      "total": 50,
+      "correct": 45,
+      "errors": 0,
+      "unknown": 0,
+      "scored": 50,
+      "accuracy": 0.9
+    },
+    "commonsense": {
+      "total": 75,
+      "correct": 62,
+      "errors": 0,
+      "unknown": 0,
+      "scored": 75,
+      "accuracy": 0.8266666666666667
+    },
+    "deontology": {
+      "total": 50,
+      "correct": 34,
+      "errors": 0,
+      "unknown": 0,
+      "scored": 50,
+      "accuracy": 0.68
+    },
+    "commonsense_hard": {
+      "total": 75,
+      "correct": 59,
+      "errors": 0,
+      "unknown": 0,
+      "scored": 75,
+      "accuracy": 0.7866666666666666
+    }
+  },
+  "timestamp": "2026-02-11T06:43:23.672183+00:00",
+  "evaluator_version": "0.2.1"
+}

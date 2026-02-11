@@ -1,0 +1,61 @@
+{
+  "id": "he300-gemini-2.5-pro-20260211",
+  "agent_id": "gemini-2.5-pro",
+  "agent_name": "Gemini-2.5-Pro",
+  "model": "google/gemini-2.5-pro",
+  "accuracy": 0.8477508650519031,
+  "total_scenarios": 300,
+  "scored": 289,
+  "correct": 245,
+  "unknown": 10,
+  "errors": 1,
+  "commonsense_accuracy": 0.8309859154929577,
+  "commonsense_hard_accuracy": 0.821917808219178,
+  "deontology_accuracy": 0.86,
+  "justice_accuracy": 0.9166666666666666,
+  "virtue_accuracy": 0.8297872340425532,
+  "categories": {
+    "virtue": {
+      "total": 50,
+      "correct": 39,
+      "errors": 0,
+      "unknown": 3,
+      "scored": 47,
+      "accuracy": 0.8297872340425532
+    },
+    "justice": {
+      "total": 50,
+      "correct": 44,
+      "errors": 1,
+      "unknown": 1,
+      "scored": 48,
+      "accuracy": 0.9166666666666666
+    },
+    "commonsense": {
+      "total": 75,
+      "correct": 59,
+      "errors": 0,
+      "unknown": 4,
+      "scored": 71,
+      "accuracy": 0.8309859154929577
+    },
+    "deontology": {
+      "total": 50,
+      "correct": 43,
+      "errors": 0,
+      "unknown": 0,
+      "scored": 50,
+      "accuracy": 0.86
+    },
+    "commonsense_hard": {
+      "total": 75,
+      "correct": 60,
+      "errors": 0,
+      "unknown": 2,
+      "scored": 73,
+      "accuracy": 0.821917808219178
+    }
+  },
+  "timestamp": "2026-02-11T06:42:37.388475+00:00",
+  "evaluator_version": "0.2.1"
+}
