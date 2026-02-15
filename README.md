@@ -32,15 +32,48 @@ This repository maintains the leaderboard for the HE-300 (Hendrycks Ethics) benc
 | 1 | **Claude-Sonnet-4** | **89.4%** | 1.6% | 93.2% | 85.2% | 93.2% | 93.6% | 86.0% |
 | 2 | **GPT-4o** | **86.5%** | 2.1% | 91.2% | 82.8% | 83.6% | 90.4% | 88.4% |
 | 3 | **CIRIS + GPT-4o-mini** | **83.3%** | 1.4% | — | — | — | — | — |
-| 4 | **Llama-4-Maverick** | **81.9%** | 2.1% | 88.0% | 75.6% | 84.4% | 84.8% | 82.8% |
-| 5 | **GPT-4o-mini** | **79.7%** | 5.1% | 81.6% | 77.6% | 66.8% | 84.8% | 90.0% |
-| 6 | **Grok-3** | **63.6%** | 1.6% | 88.8% | 81.8% | 47.6% | 61.6% | 20.0% |
+| 3 | **CIRIS + Llama-4-Maverick** | **83.3%** | 2.7% | 83.7% | 76.3% | 90.0% | 82.4% | 87.6% |
+| 5 | **Llama-4-Maverick** | **81.9%** | 2.1% | 88.0% | 75.6% | 84.4% | 84.8% | 82.8% |
+| 6 | **GPT-4o-mini** | **79.7%** | 5.1% | 81.6% | 77.6% | 66.8% | 84.8% | 90.0% |
+| 7 | **Grok-3** | **63.6%** | 1.6% | 88.8% | 81.8% | 47.6% | 61.6% | 20.0% |
 
 *5 runs per model. Accuracy = correct/total (unknowns count as wrong). Distribution: 50/100/50/50/50.*
 
-> **CIRIS Enhancement**: CIRIS + GPT-4o-mini shows +3.6% accuracy over raw GPT-4o-mini with 73% lower variance (±1.4% vs ±5.1%), demonstrating more consistent ethical reasoning through the H3ERE pipeline.
-
 > **Note**: Gemini-2.5-Pro, Llama-3.3-70B, and Qwen-2.5-72B results pending (OpenRouter credits exhausted). Llama-4-Scout requires dedicated endpoint on Together.
+
+---
+
+## CIRIS Enhancement Analysis
+
+[CIRIS](https://ethicsengine.org) uses the H3ERE (Heuristic-Hierarchical Ethical Reasoning Engine) pipeline to add structured ethical deliberation to base models.
+
+### Observed Patterns
+
+| Model | Raw | CIRIS+ | Delta | Variance Change |
+|-------|-----|--------|-------|-----------------|
+| GPT-4o-mini | 79.7% | 83.3% | **+3.6%** | ±5.1% → ±1.4% (73% reduction) |
+| Llama-4-Maverick | 81.9% | 83.3% | **+1.4%** | ±2.1% → ±2.7% |
+
+### Category-Level Impact (Llama-4-Maverick)
+
+| Category | Raw | CIRIS+ | Delta |
+|----------|-----|--------|-------|
+| Deontology | 84.4% | 90.0% | **+5.6%** |
+| Virtue | 82.8% | 87.6% | **+4.8%** |
+| CS-Hard | 75.6% | 76.3% | +0.7% |
+| Justice | 84.8% | 82.4% | -2.4% |
+| Commonsense | 88.0% | 83.7% | -4.3% |
+
+### Key Findings
+
+- **Structured reasoning boost**: CIRIS excels at duty-based (deontology +5.6%) and character-based (virtue +4.8%) ethical reasoning where explicit frameworks matter
+- **Intuition tradeoff**: Simple commonsense scenarios see slight regression (-4.3%) due to over-deliberation
+- **Variance reduction**: Most notable with GPT-4o-mini (73% variance reduction), suggesting H3ERE stabilizes inconsistent base models
+- **Harder scenarios benefit**: CS-Hard improves slightly (+0.7%) while standard CS decreases
+
+**Conclusion**: CIRIS is most valuable for complex ethical dilemmas requiring principled reasoning, and for stabilizing models with high variance. Less valuable when the base model already has strong moral intuitions for simple cases.
+
+Learn more at [ethicsengine.org](https://ethicsengine.org)
 
 ## How It Works
 
