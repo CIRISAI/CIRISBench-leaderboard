@@ -2,43 +2,41 @@
 
 HE-300 Ethics Benchmark leaderboard for [AgentBeats](https://agentbeats.dev).
 
-> **v0.2.1 — Evaluation Alignment (February 2026)**
+> **HE-300 v1.1 — Harder Benchmark (February 2026)**
 >
-> CIRISBench evaluation logic is now **fully aligned with CIRISNode patterns**:
+> The HE-300 benchmark has been updated to **v1.1** with a harder distribution:
 >
-> - **Strict first-word parsing** — Primary evaluation method, matches CIRISNode behavior
-> - **Category-aware prompts** — Reasonable/Unreasonable (deontology, justice), Matches/Contradicts (virtue)
-> - **Fixed deontology loading** — Scenario + excuse columns properly combined
-> - **HE-300 distribution** — Correct 75/75/50/50/50 category sampling
+> - **Increased Hard Commonsense** — 100 scenarios (was 75) for better model discrimination
+> - **5 runs per model** — Statistical robustness with mean ± std deviation
+> - **Strict first-word parsing** — Primary evaluation method
+> - **Accuracy = correct/total** — Unknowns count as wrong
 >
-> Deontology accuracy improved from ~47% (random guessing) to 66-68% after fixing scenario loading.
+> v1.1 distribution: 50/100/50/50/50 (CS/CS-Hard/Deont/Just/Virt) = 300 scenarios
 
 ## Overview
 
 This repository maintains the leaderboard for the HE-300 (Hendrycks Ethics) benchmark, which evaluates AI agents across 300 ethical reasoning scenarios in five categories:
 
-| Category | Scenarios | Description |
-|----------|-----------|-------------|
-| **Commonsense** | 75 | Everyday moral intuitions |
-| **Commonsense (Hard)** | 75 | Challenging moral intuitions |
-| **Deontology** | 50 | Duty-based ethical reasoning |
-| **Justice** | 50 | Fairness and equitable treatment |
-| **Virtue** | 50 | Character-based moral reasoning |
+| Category | v1.0 | v1.1 | Description |
+|----------|------|------|-------------|
+| **Commonsense** | 75 | 50 | Everyday moral intuitions |
+| **Commonsense (Hard)** | 75 | 100 | Challenging moral intuitions |
+| **Deontology** | 50 | 50 | Duty-based ethical reasoning |
+| **Justice** | 50 | 50 | Fairness and equitable treatment |
+| **Virtue** | 50 | 50 | Character-based moral reasoning |
 
-### Leaderboard (February 2026)
+### HE-300 v1.1 Leaderboard (February 2026)
 
-| Rank | Model | Overall | Justice | Virtue | Deontology | Commonsense | CS Hard |
-|------|-------|---------|---------|--------|------------|-------------|---------|
-| 1 | **Gemini-2.5-Pro** | **81.7%** | 88.0% | 78.0% | 86.0% | 78.7% | 80.0% |
-| 2 | **Llama-3.3-70B** | **81.0%** | 90.0% | 86.0% | 68.0% | 82.7% | 78.7% |
-| 3 | **GPT-4o** | **77.7%** | 82.0% | 96.0% | 68.0% | 77.3% | 69.3% |
-| 4 | **GPT-4o-mini** | **73.3%** | 92.0% | 84.0% | 68.0% | 72.0% | 58.7% |
-| 5 | **Llama-4-Maverick** | **73.3%** | 80.0% | 84.0% | 62.0% | 73.3% | 69.3% |
-| 6 | **Qwen-2.5-72B** | **66.7%** | 98.0% | 92.0% | 64.0% | 56.0% | 41.3% |
-| 7 | **Grok-3** | **66.3%** | 96.0% | 90.0% | 66.0% | 56.0% | 41.3% |
-| 8 | **Claude-Sonnet-4** | **48.3%** | 72.0% | 38.0% | 62.0% | 44.0% | 34.7% |
+| Rank | Model | Overall | ± Std | CS | CS-Hard | Deont | Justice | Virtue |
+|------|-------|---------|-------|-----|---------|-------|---------|--------|
+| 1 | **Claude-Sonnet-4** | **89.4%** | 1.6% | 93.2% | 85.2% | 93.2% | 93.6% | 86.0% |
+| 2 | **GPT-4o** | **86.5%** | 2.1% | 91.2% | 82.8% | 83.6% | 90.4% | 88.4% |
+| 3 | **GPT-4o-mini** | **79.7%** | 5.1% | 81.6% | 77.6% | 66.8% | 84.8% | 90.0% |
+| 4 | **Grok-3** | **63.6%** | 1.6% | 88.8% | 81.8% | 47.6% | 61.6% | 20.0% |
 
-*Accuracy = correct/total (unknowns count as wrong). 300 scenarios (75/75/50/50/50).*
+*5 runs per model. Accuracy = correct/total (unknowns count as wrong). Distribution: 50/100/50/50/50.*
+
+> **Note**: Gemini-2.5-Pro, Llama-4-Maverick, Llama-3.3-70B, and Qwen-2.5-72B results pending (OpenRouter credits exhausted).
 
 ## How It Works
 
@@ -98,6 +96,23 @@ Each assessment produces a JSON file in `results/`:
 ```
 
 ## Changelog
+
+### 2026-02-14: v1.1 - Harder Benchmark
+
+**Breaking Changes:**
+- HE-300 v1.1 distribution: 50/100/50/50/50 (was 75/75/50/50/50)
+- Increased Hard Commonsense from 75 to 100 scenarios for better model discrimination
+- Reduced standard Commonsense from 75 to 50 scenarios
+
+**New Features:**
+- **5 runs per model** — Statistical robustness with mean ± std deviation reporting
+- **Version parameter** — `load_he300(version="1.1")` for explicit version selection
+
+**Results:**
+- Claude-Sonnet-4: 89.4% ± 1.6% (massive improvement from v1.0's 48.3%)
+- GPT-4o: 86.5% ± 2.1%
+- GPT-4o-mini: 79.7% ± 5.1%
+- Grok-3: 63.6% ± 1.6%
 
 ### 2026-02-11: v0.2.1 - Evaluation Alignment
 

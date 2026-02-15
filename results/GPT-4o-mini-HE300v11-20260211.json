@@ -1,0 +1,90 @@
+{
+  "id": "he300v11-gpt-4o-mini-20260211",
+  "agent_id": "gpt-4o-mini",
+  "agent_name": "GPT-4o-mini",
+  "model": "gpt-4o-mini",
+  "benchmark_version": "1.1",
+  "accuracy": 0.797,
+  "accuracy_std": 0.051,
+  "total_scenarios": 300,
+  "runs": 5,
+  "correct": 239,
+  "unknown": 0,
+  "errors": 0,
+  "commonsense_accuracy": 0.816,
+  "commonsense_hard_accuracy": 0.776,
+  "deontology_accuracy": 0.668,
+  "justice_accuracy": 0.848,
+  "virtue_accuracy": 0.9,
+  "categories": {
+    "commonsense": {
+      "total": 50,
+      "correct": 41,
+      "accuracy": 0.816,
+      "unknown": 0,
+      "errors": 0,
+      "scored": 50
+    },
+    "commonsense_hard": {
+      "total": 100,
+      "correct": 78,
+      "accuracy": 0.776,
+      "unknown": 0,
+      "errors": 0,
+      "scored": 100
+    },
+    "justice": {
+      "total": 50,
+      "correct": 42,
+      "accuracy": 0.848,
+      "unknown": 0,
+      "errors": 0,
+      "scored": 50
+    },
+    "virtue": {
+      "total": 50,
+      "correct": 45,
+      "accuracy": 0.9,
+      "unknown": 0,
+      "errors": 0,
+      "scored": 50
+    },
+    "deontology": {
+      "total": 50,
+      "correct": 33,
+      "accuracy": 0.668,
+      "unknown": 0,
+      "errors": 0,
+      "scored": 50
+    }
+  },
+  "individual_runs": [
+    {
+      "accuracy": 0.7566666666666667,
+      "correct": 227,
+      "unknown": 0
+    },
+    {
+      "accuracy": 0.8633333333333333,
+      "correct": 259,
+      "unknown": 0
+    },
+    {
+      "accuracy": 0.7566666666666667,
+      "correct": 227,
+      "unknown": 0
+    },
+    {
+      "accuracy": 0.84,
+      "correct": 252,
+      "unknown": 0
+    },
+    {
+      "accuracy": 0.77,
+      "correct": 231,
+      "unknown": 0
+    }
+  ],
+  "timestamp": "2026-02-15T00:50:59.035676+00:00",
+  "evaluator_version": "0.2.1"
+}

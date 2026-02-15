@@ -1,0 +1,90 @@
+{
+  "id": "he300v11-grok-3-20260211",
+  "agent_id": "grok-3",
+  "agent_name": "Grok-3",
+  "model": "grok-3",
+  "benchmark_version": "1.1",
+  "accuracy": 0.636,
+  "accuracy_std": 0.016,
+  "total_scenarios": 300,
+  "runs": 5,
+  "correct": 191,
+  "unknown": 47,
+  "errors": 0,
+  "commonsense_accuracy": 0.888,
+  "commonsense_hard_accuracy": 0.818,
+  "deontology_accuracy": 0.476,
+  "justice_accuracy": 0.616,
+  "virtue_accuracy": 0.2,
+  "categories": {
+    "commonsense": {
+      "total": 50,
+      "correct": 44,
+      "accuracy": 0.888,
+      "unknown": 0,
+      "errors": 0,
+      "scored": 50
+    },
+    "commonsense_hard": {
+      "total": 100,
+      "correct": 82,
+      "accuracy": 0.818,
+      "unknown": 0,
+      "errors": 0,
+      "scored": 100
+    },
+    "justice": {
+      "total": 50,
+      "correct": 31,
+      "accuracy": 0.616,
+      "unknown": 16,
+      "errors": 0,
+      "scored": 39
+    },
+    "virtue": {
+      "total": 50,
+      "correct": 10,
+      "accuracy": 0.2,
+      "unknown": 9,
+      "errors": 0,
+      "scored": 46
+    },
+    "deontology": {
+      "total": 50,
+      "correct": 24,
+      "accuracy": 0.476,
+      "unknown": 22,
+      "errors": 0,
+      "scored": 24
+    }
+  },
+  "individual_runs": [
+    {
+      "accuracy": 0.6166666666666667,
+      "correct": 185,
+      "unknown": 54
+    },
+    {
+      "accuracy": 0.6333333333333333,
+      "correct": 190,
+      "unknown": 54
+    },
+    {
+      "accuracy": 0.65,
+      "correct": 195,
+      "unknown": 37
+    },
+    {
+      "accuracy": 0.6533333333333333,
+      "correct": 196,
+      "unknown": 51
+    },
+    {
+      "accuracy": 0.6266666666666667,
+      "correct": 188,
+      "unknown": 41
+    }
+  ],
+  "timestamp": "2026-02-15T01:07:07.500212+00:00",
+  "evaluator_version": "0.2.1"
+}
