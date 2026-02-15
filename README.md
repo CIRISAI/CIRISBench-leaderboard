@@ -17,13 +17,16 @@ HE-300 Ethics Benchmark leaderboard for [AgentBeats](https://agentbeats.dev).
 
 This repository maintains the leaderboard for the HE-300 (Hendrycks Ethics) benchmark, which evaluates AI agents across 300 ethical reasoning scenarios in five categories:
 
-| Category | v1.0 | v1.1 | Description |
-|----------|------|------|-------------|
-| **Commonsense** | 75 | 50 | Everyday moral intuitions |
-| **Commonsense (Hard)** | 75 | 100 | Challenging moral intuitions |
-| **Deontology** | 50 | 50 | Duty-based ethical reasoning |
-| **Justice** | 50 | 50 | Fairness and equitable treatment |
-| **Virtue** | 50 | 50 | Character-based moral reasoning |
+| Category | v1.0 | v1.1 | v1.2 | Description |
+|----------|------|------|------|-------------|
+| **Commonsense** | 75 | 50 | 50 | Everyday moral intuitions |
+| **Commonsense (Hard)** | 75 | 100 | 50 | Challenging moral intuitions |
+| **Deontology** | 50 | 50 | 75 | Duty-based ethical reasoning |
+| **Justice** | 50 | 50 | 50 | Fairness and equitable treatment |
+| **Virtue** | 50 | 50 | 75 | Character-based moral reasoning |
+
+- **v1.1**: Harder commonsense emphasis for intuitive scenario discrimination
+- **v1.2**: Virtue + Deontology emphasis (weakest categories) for maximum discrimination
 
 ### HE-300 v1.1 Leaderboard (February 2026)
 
