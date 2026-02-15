@@ -32,14 +32,15 @@ This repository maintains the leaderboard for the HE-300 (Hendrycks Ethics) benc
 | 1 | **Claude-Sonnet-4** | **89.4%** | 1.6% | 93.2% | 85.2% | 93.2% | 93.6% | 86.0% |
 | 2 | **GPT-4o** | **86.5%** | 2.1% | 91.2% | 82.8% | 83.6% | 90.4% | 88.4% |
 | 3 | **CIRIS + GPT-4o-mini** | **83.3%** | 1.4% | — | — | — | — | — |
-| 4 | **GPT-4o-mini** | **79.7%** | 5.1% | 81.6% | 77.6% | 66.8% | 84.8% | 90.0% |
-| 5 | **Grok-3** | **63.6%** | 1.6% | 88.8% | 81.8% | 47.6% | 61.6% | 20.0% |
+| 4 | **Llama-4-Maverick** | **81.9%** | 2.1% | 88.0% | 75.6% | 84.4% | 84.8% | 82.8% |
+| 5 | **GPT-4o-mini** | **79.7%** | 5.1% | 81.6% | 77.6% | 66.8% | 84.8% | 90.0% |
+| 6 | **Grok-3** | **63.6%** | 1.6% | 88.8% | 81.8% | 47.6% | 61.6% | 20.0% |
 
 *5 runs per model. Accuracy = correct/total (unknowns count as wrong). Distribution: 50/100/50/50/50.*
 
 > **CIRIS Enhancement**: CIRIS + GPT-4o-mini shows +3.6% accuracy over raw GPT-4o-mini with 73% lower variance (±1.4% vs ±5.1%), demonstrating more consistent ethical reasoning through the H3ERE pipeline.
 
-> **Note**: Gemini-2.5-Pro, Llama-4-Maverick, Llama-3.3-70B, and Qwen-2.5-72B results pending (OpenRouter credits exhausted).
+> **Note**: Gemini-2.5-Pro, Llama-3.3-70B, and Qwen-2.5-72B results pending (OpenRouter credits exhausted). Llama-4-Scout requires dedicated endpoint on Together.
 
 ## How It Works
 

@@ -1,0 +1,60 @@
+{
+  "id": "he300v11-llama-4-maverick-20260214",
+  "agent_name": "Llama-4-Maverick",
+  "model": "meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8",
+  "benchmark_version": "1.1",
+  "accuracy": 0.819,
+  "accuracy_std": 0.021,
+  "total_scenarios": 300,
+  "runs": 5,
+  "categories": {
+    "commonsense": {
+      "total": 50,
+      "correct": 44,
+      "accuracy": 0.88
+    },
+    "commonsense_hard": {
+      "total": 100,
+      "correct": 76,
+      "accuracy": 0.756
+    },
+    "justice": {
+      "total": 50,
+      "correct": 42,
+      "accuracy": 0.848
+    },
+    "virtue": {
+      "total": 50,
+      "correct": 41,
+      "accuracy": 0.828
+    },
+    "deontology": {
+      "total": 50,
+      "correct": 42,
+      "accuracy": 0.844
+    }
+  },
+  "individual_runs": [
+    {
+      "accuracy": 0.8133333333333334,
+      "correct": 244
+    },
+    {
+      "accuracy": 0.8,
+      "correct": 240
+    },
+    {
+      "accuracy": 0.8066666666666666,
+      "correct": 242
+    },
+    {
+      "accuracy": 0.8533333333333334,
+      "correct": 256
+    },
+    {
+      "accuracy": 0.82,
+      "correct": 246
+    }
+  ],
+  "timestamp": "2026-02-15T01:49:09.638767+00:00"
+}
